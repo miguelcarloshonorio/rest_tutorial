@@ -14,13 +14,12 @@ class UserModel(banco.Model):
     login = banco.Column(banco.String(40), nullable=False, unique=True)
     senha = banco.Column(banco.String(40), nullable=False)
     email = banco.Column(banco.String(80), nullable=False, unique=True)
-    ativado = banco.Column(banco.Boolean, default=False)
+    ativado = banco.Column(banco.Boolean, default=True)
 
     def __init__(self, login, senha, email, ativado):
         self.login = login
         self.senha = senha
         self.email = email
-        self.ativado = ativado
 
     def send_confirmation_email(self):
         # http://127.0.0.1:5000/confirmacao/{user_id}
